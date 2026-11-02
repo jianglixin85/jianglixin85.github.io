@@ -1,0 +1,36 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  tags: string[];
+  date: Date;
+  slug: string;
+  source?: string;
+  feishuUrl?: string;
+}
+
+const { title, description, tags, date, slug, source = 'local', feishuUrl } = Astro.props;
+
+// Feishu docs open directly in Feishu; local docs go to the detail page
+const href = source === 'feishu' && feishuUrl ? feishuUrl : `/notes/${slug}`;
+const target = source === 'feishu' ? '_blank' : undefined;
+const rel = source === 'feishu' ? 'noopener' : undefined;
+---
+
+<a href={href} target={target} rel={rel} class="group block card p-5">
+  <div class="mb-2 flex items-start justify-between gap-2">
+    <h3 class="text-h4 font-medium text-text group-hover:text-accent transition-colors duration-fast line-clamp-2">{title}</h3>
+    <time class="shrink-0 text-xs font-mono text-text-muted">
+      {date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short' })}
+    </time>
+  </div>
+  <p class="mb-3 text-sm text-text-soft line-clamp-2">{description}</p>
+  <div class="flex flex-wrap gap-1">
+    {tags.map((tag) => (
+      <span class="tag">{tag}</span>
+    ))}
+    {source === 'feishu' && (
+      <span class="tag" style="background: rgba(244, 114, 182, 0.12); color: var(--color-dusty);">飞书</span>
+    )}
+  </div>
+</a>

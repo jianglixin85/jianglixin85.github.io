@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "skills": {
+    "cloudbase": {
+      "source": "https://cnb.cool/tencent/cloud/cloudbase/cloudbase-skills.git",
+      "sourceUrl": "https://cnb.cool/tencent/cloud/cloudbase/cloudbase-skills.git",
+      "sourceType": "git",
+      "skillPath": "skills/cloudbase/SKILL.md",
+      "computedHash": "36ef79b1f2abee3bad1f04e0bb16fa7680d1b59cbb2a494a6bab23c47e67654f"
+    }
+  }
+}

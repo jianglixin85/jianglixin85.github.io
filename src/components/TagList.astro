@@ -1,0 +1,36 @@
+---
+interface Props {
+  tags: string[];
+  active?: string;
+}
+
+const { tags, active } = Astro.props;
+const uniqueTags = [...new Set(tags)].sort();
+---
+
+<div class="flex flex-wrap gap-2">
+  <a
+    href={active ? '/notes' : undefined}
+    class:list={[
+      'rounded-full px-3 py-1 text-sm font-mono transition-colors duration-fast',
+      !active
+        ? 'bg-accent/85 text-white'
+        : 'bg-bg-muted text-text-muted hover:text-accent',
+    ]}
+  >
+    全部
+  </a>
+  {uniqueTags.map((tag) => (
+    <a
+      href={`/notes?tag=${encodeURIComponent(tag)}`}
+      class:list={[
+        'rounded-full px-3 py-1 text-sm font-mono transition-colors duration-fast',
+        active === tag
+          ? 'bg-accent/85 text-white'
+          : 'bg-bg-muted text-text-muted hover:text-accent',
+      ]}
+    >
+      {tag}
+    </a>
+  ))}
+</div>

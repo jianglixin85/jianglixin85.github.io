@@ -1,0 +1,30 @@
+{
+  "name": "jlx-academic-homepage",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "sync:feishu": "tsx scripts/sync-feishu.ts",
+    "sync:github": "tsx scripts/sync-github.ts",
+    "sync:all": "pnpm sync:feishu && pnpm sync:github",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.0.0"
+  },
+  "devDependencies": {
+    "@astrojs/tailwind": "^6.0.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.7.0",
+    "tsx": "^4.0.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+src/content/notes-feishu/
+src/content/projects-gh/
+!.gitkeep
+.DS_Store
+
+# local artifacts
+preview/
+design-demos/
+*.bak
+
+# local-only config (contains credentials)
+.claude/
+sync.config.ts
+cloudbaserc.json

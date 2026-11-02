@@ -1,0 +1,96 @@
+---
+import Base from '../../layouts/Base.astro';
+import NoteCard from '../../components/NoteCard.astro';
+import { getCollection } from 'astro:content';
+import profile from '../../data/profile';
+
+let allNotesFeishu: Awaited<ReturnType<typeof getCollection<'notesFeishu'>>> = [];
+try { allNotesFeishu = await getCollection('notesFeishu'); } catch {}
+
+const allFeishuNotes = allNotesFeishu
+  .filter((n) => !n.data.draft)
+  .map((n) => ({ ...n, source: 'feishu' as const }));
+
+const activeTag = Astro.url.searchParams.get('tag') || undefined;
+
+// Build categories with their notes
+const categories = profile.noteCategories.map((cat) => ({
+  ...cat,
+  notes: allFeishuNotes
+    .filter((n) => n.data.tags.includes(cat.tag))
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
+}));
+
+// If a specific tag is active, only show that category
+const displayCategories = activeTag
+  ? categories.filter((c) => c.tag === activeTag)
+  : categories;
+---
+
+<Base title="AI学习笔记 | JLX" description="JLX 的 AI 学习笔记，涵盖大模型、Agent、AI产品经理和运营">
+  <div class="mx-auto max-w-page px-4 py-12 md:px-6 md:py-16">
+    <h1 class="text-h1 mb-4">AI学习笔记</h1>
+    <p class="mb-8 text-text-soft">来自飞书知识库，持续更新的 AI 学习笔记</p>
+
+    <!-- Category tabs -->
+    <div class="mb-8 flex flex-wrap gap-2">
+      <a
+        href="/notes"
+        class:list={[
+          'rounded-full px-3 py-1 text-sm font-mono transition-colors duration-fast',
+          !activeTag
+            ? 'bg-accent/85 text-white'
+            : 'bg-bg-muted text-text-muted hover:text-accent',
+        ]}
+      >
+        全部
+      </a>
+      {categories.map((cat) => (
+        <a
+          href={`/notes?tag=${encodeURIComponent(cat.tag)}`}
+          class:list={[
+            'rounded-full px-3 py-1 text-sm font-mono transition-colors duration-fast',
+            activeTag === cat.tag
+              ? 'bg-accent/85 text-white'
+              : 'bg-bg-muted text-text-muted hover:text-accent',
+          ]}
+        >
+          {cat.name}
+        </a>
+      ))}
+    </div>
+
+    {displayCategories.map((cat) => (
+      <div class="mb-8">
+        {displayCategories.length > 1 && (
+          <h2 class="mb-4 text-h4 font-medium text-text">{cat.name}</h2>
+        )}
+        {cat.notes.length > 0 ? (
+          <div class="grid gap-4 md:grid-cols-2">
+            {cat.notes.map((note) => (
+              <NoteCard
+                title={note.data.title}
+                description={note.data.description}
+                tags={note.data.tags}
+                date={note.data.date}
+                slug={note.id}
+                source={note.source}
+                feishuUrl={note.data.feishuUrl}
+              />
+            ))}
+          </div>
+        ) : (
+          <p class="text-sm text-text-muted">暂无笔记</p>
+        )}
+      </div>
+    ))}
+
+    {displayCategories.length === 0 && (
+      <p class="text-text-muted">暂无笔记</p>
+    )}
+
+    <div class="mt-8">
+      <a href={profile.links.feishuDrive} class="btn-tertiary" target="_blank" rel="noopener">在飞书中查看全部笔记 &rarr;</a>
+    </div>
+  </div>
+</Base>

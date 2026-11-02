@@ -1,0 +1,41 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  tags: string[];
+  url?: string;
+  repo?: string;
+  date: Date;
+  pinned?: boolean;
+}
+
+const { title, description, tags, url, repo, date, pinned = false } = Astro.props;
+---
+
+<article class="group card p-5">
+  <div class="mb-2 flex items-start justify-between gap-2">
+    <h3 class="text-h4 font-medium text-text">
+      {pinned && <span class="mr-1 text-sage">&#x25C6;</span>}
+      {title}
+    </h3>
+    <time class="shrink-0 text-xs font-mono text-text-muted">
+      {date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short' })}
+    </time>
+  </div>
+  <p class="mb-3 text-sm text-text-soft line-clamp-2">{description}</p>
+  <div class="flex items-center justify-between">
+    <div class="flex flex-wrap gap-1">
+      {tags.map((tag) => (
+        <span class="tag">{tag}</span>
+      ))}
+    </div>
+    <div class="flex gap-3 text-xs text-text-muted">
+      {url && (
+        <a href={url} class="btn-tertiary" target="_blank" rel="noopener">Demo</a>
+      )}
+      {repo && (
+        <a href={repo} class="btn-tertiary" target="_blank" rel="noopener">Source</a>
+      )}
+    </div>
+  </div>
+</article>

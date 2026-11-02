@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>磨砂玻璃 · 10 种变体 - JLX Homepage</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "Inter", system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #e8e6e3; padding: 32px; }
+  h1 { text-align: center; font-size: 22px; color: #2C2926; margin-bottom: 4px; font-weight: 700; }
+  .subtitle { text-align: center; font-size: 13px; color: #8C847A; margin-bottom: 32px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; max-width: 1400px; margin: 0 auto; }
+  .preview { border-radius: 14px; overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,0.1); }
+  .label { background: #fff; padding: 14px 18px; font-size: 13px; font-weight: 700; color: #2C2926; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 8px; }
+  .label span { font-weight: 400; color: #8C847A; font-size: 11px; }
+  .mock { padding: 36px 28px; min-height: 420px; position: relative; overflow: hidden; }
+
+  /* ===== Base shared ===== */
+  .hero { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 22px; }
+  .avatar { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+  .name { font-size: 20px; font-weight: 700; margin-bottom: 3px; }
+  .desc { font-size: 11px; line-height: 1.6; }
+  .sec-title { font-size: 10px; font-weight: 600; margin-bottom: 10px; letter-spacing: 0.5px; }
+  .card { padding: 13px; margin-bottom: 8px; }
+  .card-title { font-size: 12px; font-weight: 600; }
+  .card-sub { font-size: 10px; }
+  .card-desc { font-size: 10px; margin-top: 3px; line-height: 1.5; }
+  .tags { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 4px; }
+  .t { display: inline-block; font-size: 9px; padding: 3px 9px; border-radius: 20px; }
+
+  /* ===== V1: Sage & Cream ===== */
+  .v1 .mock { background: linear-gradient(135deg, #E8F0EF 0%, #F0EDE6 50%, #E8F0EF 100%); }
+  .v1 .mock::before { content:''; position:absolute; top:-50px; right:-50px; width:220px; height:220px; background:radial-gradient(circle,rgba(107,143,142,0.15) 0%,transparent 70%); border-radius:50%; }
+  .v1 .name { color: #2C2926; }
+  .v1 .desc { color: #5C5650; }
+  .v1 .sec-title { color: #8C847A; text-transform: uppercase; }
+  .v1 .card { background: rgba(255,255,255,0.55); backdrop-filter: blur(16px); border-radius: 10px; border: 1px solid rgba(255,255,255,0.6); }
+  .v1 .card-title { color: #2C2926; }
+  .v1 .card-sub { color: #8C847A; }
+  .v1 .card-desc { color: #5C5650; }
+  .v1 .t { background: rgba(107,143,142,0.12); color: #6B8F8E; }
+  .v1 .avatar { box-shadow: 0 0 0 3px rgba(107,143,142,0.2), 0 10px 30px rgba(0,0,0,0.08); }
+
+  /* ===== V2: Dusty Rose ===== */
+  .v2 .mock { background: linear-gradient(135deg, #F5ECE8 0%, #F0EBE6 50%, #F2E8ED 100%); }
+  .v2 .mock::before { content:''; position:absolute; top:-50px; left:-50px; width:220px; height:220px; background:radial-gradient(circle,rgba(178,140,140,0.15) 0%,transparent 70%); border-radius:50%; }
+  .v2 .name { color: #3D2C2C; }
+  .v2 .desc { color: #6E5555; }
+  .v2 .sec-title { color: #A08080; text-transform: uppercase; }
+  .v2 .card { background: rgba(255,255,255,0.55); backdrop-filter: blur(16px); border-radius: 10px; border: 1px solid rgba(255,255,255,0.6); }
+  .v2 .card-title { color: #3D2C2C; }
+  .v2 .card-sub { color: #A08080; }
+  .v2 .card-desc { color: #6E5555; }
+  .v2 .t { background: rgba(178,140,140,0.12); color: #B28C8C; }
+  .v2 .avatar { box-shadow: 0 0 0 3px rgba(178,140,140,0.2), 0 10px 30px rgba(0,0,0,0.08); }
+
+  /* ===== V3: Ocean Mist ===== */
+  .v3 .mock { background: linear-gradient(135deg, #E4ECF2 0%, #EEF0F0 50%, #E4EAEF 100%); }
+  .v3 .mock::before { content:''; position:absolute; bottom:-60px; right:-40px; width:240px; height:240px; background:radial-gradient(circle,rgba(100,130,155,0.12) 0%,transparent 70%); border-radius:50%; }
+  .v3 .name { color: #1E2D3D; }
+  .v3 .desc { color: #4A6070; }
+  .v3 .sec-title { color: #7A95A8; text-transform: uppercase; }
+  .v3 .card { background: rgba(255,255,255,0.55); backdrop-filter: blur(16px); border-radius: 10px; border: 1px solid rgba(255,255,255,0.6); }
+  .v3 .card-title { color: #1E2D3D; }
+  .v3 .card-sub { color: #7A95A8; }
+  .v3 .card-desc { color: #4A6070; }
+  .v3 .t { background: rgba(100,130,155,0.12); color: #64829B; }
+  .v3 .avatar { box-shadow: 0 0 0 3px rgba(100,130,155,0.2), 0 10px 30px rgba(0,0,0,0.08); }
+
+  /* ===== V4: Amber Glow ===== */
+  .v4 .mock { background: linear-gradient(135deg, #F2EDE4 0%, #F5F0E6 50%, #F0EBE0 100%); }
+  .v4 .mock::before { content:''; position:absolute; top:-40px; right:-60px; width:200px; height:200px; background:radial-gradient(circle,rgba(180,150,90,0.12) 0%,transparent 70%); border-radius:50%; }
+  .v4 .name { color: #3A3020; }
+  .v4 .desc { color: #6B5D40; }
+  .v4 .sec-title { color: #9B8A65; text-transform: uppercase; }
+  .v4 .card { background: rgba(255,255,255,0.55); backdrop-filter: blur(16px); border-radius: 10px; border: 1px solid rgba(255,255,255,0.6); }
+  .v4 .card-title { color: #3A3020; }
+  .v4 .card-sub { color: #9B8A65; }
+  .v4 .card-desc { color: #6B5D40; }
+  .v4 .t { background: rgba(180,150,90,0.12); color: #A89050; }
+  .v4 .avatar { box-shadow: 0 0 0 3px rgba(180,150,90,0.2), 0 10px 30px rgba(0,0,0,0.08); }
+
+  /* ===== V5: Lavender Haze ===== */
+  .v5 .mock { background: linear-gradient(135deg, #EBE6F0 0%, #F0EEF2 50%, #E8E4EE 100%); }
+  .v5 .mock::before { content:''; position:absolute; top:-50px; left:-40px; width:200px; height:200px; background:radial-gradient(circle,rgba(130,115,155,0.12) 0%,transparent 70%); border-radius:50%; }
+  .v5 .name { color: #2E2640; }
+  .v5 .desc { color: #5C5070; }
+  .v5 .sec-title { color: #8A7DA0; text-transform: uppercase; }
+  .v5 .card { background: rgba(255,255,255,0.55); backdrop-filter: blur(16px); border-radius: 10px; border: 1px solid rgba(255,255,255,0.6); }
+  .v5 .card-title { color: #2E2640; }
+  .v5 .card-sub { color: #8A7DA0; }
+  .v5 .card-desc { color: #5C5070; }
+  .v5 .t { background: rgba(130,115,155,0.12); color: #8273A0; }
+  .v5 .avatar { box-shadow: 0 0 0 3px rgba(130,115,155,0.2), 0 10px 30px rgba(0,0,0,0.08); }
+
+  /* ===== V6: Matcha ===== */
+  .v6 .mock { background: linear-gradient(135deg, #E4EDE6 0%, #EEF0E8 50%, #E6ECE4 100%); }
+  .v6 .mock::before { content:''; position:absolute; bottom:-40px; left:-50px; width:220px; height:220px; background:radial-gradient(circle,rgba(100,140,100,0.12) 0%,transparent 70%); border-radius:50%; }
+  .v6 .name { color: #1E3020; }
+  .v6 .desc { color: #3E5A40; }
+  .v6 .sec-title { color: #6E8A65; text-transform: uppercase; }
+  .v6 .card { background: rgba(255,255,255,0.55); backdrop-filter: blur(16px); border-radius: 10px; border: 1px solid rgba(255,255,255,0.6); }
+  .v6 .card-title { color: #1E3020; }
+  .v6 .card-sub { color: #6E8A65; }
+  .v6 .card-desc { color: #3E5A40; }
+  .v6 .t { background: rgba(100,140,100,0.12); color: #5A8A5E; }
+  .v6 .avatar { box-shadow: 0 0 0 3px rgba(100,140,100,0.2), 0 10px 30px rgba(0,0,0,0.08); }
+
+  /* ===== V7: Charcoal Frost ===== */
+  .v7 .mock { background: linear-gradient(135deg, #2A2A30 0%, #323238 50%, #2E2E34 100%); }
+  .v7 .mock::before { content:''; position:absolute; top:-50px; right:-50px; width:220px; height:220px; background:radial-gradient(circle,rgba(140,160,180,0.1) 0%,transparent 70%); border-radius:50%; }
+  .v7 .name { color: #E8E4DE; }
+  .v7 .desc { color: #B0AAA2; }
+  .v7 .sec-title { color: #7A95A8; text-transform: uppercase; }
+  .v7 .card { background: rgba(255,255,255,0.06); backdrop-filter: blur(16px); border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); }
+  .v7 .card-title { color: #E8E4DE; }
+  .v7 .card-sub { color: #7A95A8; }
+  .v7 .card-desc { color: #B0AAA2; }
+  .v7 .t { background: rgba(122,149,168,0.12); color: #7A95A8; }
+  .v7 .avatar { box-shadow: 0 0 0 3px rgba(122,149,168,0.2), 0 10px 30px rgba(0,0,0,0.3); }
+
+  /* ===== V8: Terracotta ===== */
+  .v8 .mock { background: linear-gradient(135deg, #F0E6DE 0%, #F2ECE6 50%, #EDE4DC 100%); }
+  .v8 .mock::before { content:''; position:absolute; top:-40px; right:-40px; width:200px; height:200px; background:radial-gradient(circle,rgba(170,110,80,0.12) 0%,transparent 70%); border-radius:50%; }
+  .v8 .name { color: #3D2A1E; }
+  .v8 .desc { color: #6E4E3A; }
+  .v8 .sec-title { color: #A07858; text-transform: uppercase; }
+  .v8 .card { background: rgba(255,255,255,0.55); backdrop-filter: blur(16px); border-radius: 10px; border: 1px solid rgba(255,255,255,0.6); }
+  .v8 .card-title { color: #3D2A1E; }
+  .v8 .card-sub { color: #A07858; }
+  .v8 .card-desc { color: #6E4E3A; }
+  .v8 .t { background: rgba(170,110,80,0.12); color: #AA6E50; }
+  .v8 .avatar { box-shadow: 0 0 0 3px rgba(170,110,80,0.2), 0 10px 30px rgba(0,0,0,0.08); }
+
+  /* ===== V9: Midnight Sapphire ===== */
+  .v9 .mock { background: linear-gradient(135deg, #1A1E2E 0%, #22283A 50%, #1E2234 100%); }
+  .v9 .mock::before { content:''; position:absolute; bottom:-50px; right:-50px; width:220px; height:220px; background:radial-gradient(circle,rgba(100,140,200,0.1) 0%,transparent 70%); border-radius:50%; }
+  .v9 .name { color: #D8E0EE; }
+  .v9 .desc { color: #98A8C0; }
+  .v9 .sec-title { color: #6888B0; text-transform: uppercase; }
+  .v9 .card { background: rgba(255,255,255,0.06); backdrop-filter: blur(16px); border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); }
+  .v9 .card-title { color: #D8E0EE; }
+  .v9 .card-sub { color: #6888B0; }
+  .v9 .card-desc { color: #98A8C0; }
+  .v9 .t { background: rgba(100,140,200,0.12); color: #6888B0; }
+  .v9 .avatar { box-shadow: 0 0 0 3px rgba(100,140,200,0.2), 0 10px 30px rgba(0,0,0,0.3); }
+
+  /* ===== V10: Olive Garden ===== */
+  .v10 .mock { background: linear-gradient(135deg, #E8EDE4 0%, #F0F0EA 50%, #EAECE4 100%); }
+  .v10 .mock::before { content:''; position:absolute; top:-40px; left:-40px; width:200px; height:200px; background:radial-gradient(circle,rgba(120,130,90,0.12) 0%,transparent 70%); border-radius:50%; }
+  .v10 .name { color: #2A3020; }
+  .v10 .desc { color: #4E5A3A; }
+  .v10 .sec-title { color: #7A8A5E; text-transform: uppercase; }
+  .v10 .card { background: rgba(255,255,255,0.55); backdrop-filter: blur(16px); border-radius: 10px; border: 1px solid rgba(255,255,255,0.6); }
+  .v10 .card-title { color: #2A3020; }
+  .v10 .card-sub { color: #7A8A5E; }
+  .v10 .card-desc { color: #4E5A3A; }
+  .v10 .t { background: rgba(120,130,90,0.12); color: #7A8A5E; }
+  .v10 .avatar { box-shadow: 0 0 0 3px rgba(120,130,90,0.2), 0 10px 30px rgba(0,0,0,0.08); }
+
+  /* ===== Layout variants ===== */
+  .layout-center .hero { flex-direction: column; align-items: center; text-align: center; }
+  .layout-center .tags { justify-content: center; }
+
+  .layout-reverse .hero { flex-direction: row-reverse; }
+
+  .layout-compact .card { padding: 10px; margin-bottom: 6px; }
+  .layout-compact .desc { font-size: 10px; }
+
+  .layout-serif .name { font-family: Georgia, "Noto Serif SC", serif; }
+  .layout-serif .card-title { font-family: Georgia, "Noto Serif SC", serif; }
+
+  .layout-mono .sec-title { font-family: "JetBrains Mono", "SF Mono", monospace; letter-spacing: 1px; }
+  .layout-mono .card-sub { font-family: monospace; }
+
+  .layout-tagrow .tags { margin-top: 0; gap: 3px; }
+  .layout-tagrow .t { border-radius: 4px; }
+
+  .layout-pill .card { border-radius: 16px; }
+  .layout-pill .t { border-radius: 50px; padding: 4px 12px; }
+
+  .layout-accent-line .sec-title { border-bottom: 2px solid; padding-bottom: 4px; }
+  .v2.layout-accent-line .sec-title { border-color: #B28C8C; }
+  .v4.layout-accent-line .sec-title { border-color: #A89050; }
+  .v6.layout-accent-line .sec-title { border-color: #5A8A5E; }
+</style>
+</head>
+<body>
+
+<h1>磨砂玻璃 · 10 种变体</h1>
+<p class="subtitle">基于风格 1 (Frosted Glass) 演化 — 不同配色 / 布局 / 字体 / 卡片形态</p>
+
+<div class="grid">
+
+  <!-- V1: Sage & Cream (原版) -->
+  <div class="preview v1">
+    <div class="label">V1. 鼠尾草奶油 <span>Sage & Cream · 原版</span></div>
+    <div class="mock">
+      <div class="hero">
+        <img class="avatar" src="https://picsum.photos/seed/jlx1/128/128" alt="">
+        <div><div class="name">蒋立鑫</div><div class="desc">AI 大模型产品运营 / 游戏开发工程师 / 开源社区布道者。七余年复合背景，现聚焦 AI 大模型应用方向。</div></div>
+      </div>
+      <div class="sec-title">工作经历</div>
+      <div class="card"><div class="card-title">天翼云科技 · AI 大模型高级产品运营</div><div class="card-sub">2023 – 至今</div><div class="card-desc">推动大模型公有云 20+ 项功能迭代落地，工单及时率 87% → 93.27%</div></div>
+      <div class="card"><div class="card-title">Cocos · 高级产品运营</div><div class="card-sub">2021 – 2023</div><div class="card-desc">社区用户增长约 30%；XR/AI 产品从 0 到 1 搭建</div></div>
+      <div class="tags"><span class="t">Cocos Creator</span><span class="t">TypeScript</span><span class="t">AI 大模型</span><span class="t">提示词工程</span></div>
+    </div>
+  </div>
+
+  <!-- V2: Dusty Rose 居中布局 + 衬线标题 -->
+  <div class="preview v2 layout-center layout-serif">
+    <div class="label">V2. 玫瑰灰 <span>Dusty Rose · 居中 + 衬线</span></div>
+    <div class="mock">
+      <div class="hero">
+        <img class="avatar" src="https://picsum.photos/seed/jlx2/128/128" alt="">
+        <div><div class="name">蒋立鑫</div><div class="desc">AI 大模型产品运营 / 游戏开发工程师 / 开源社区布道者</div></div>
+      </div>
+      <div class="sec-title">工作经历</div>
+      <div class="card"><div class="card-title">天翼云科技 · AI 大模型高级产品运营</div><div class="card-sub">2023 – 至今</div><div class="card-desc">推动大模型公有云 20+ 项功能迭代落地，工单及时率 87% → 93.27%</div></div>
+      <div class="card"><div class="card-title">Cocos · 高级产品运营</div><div class="card-sub">2021 – 2023</div><div class="card-desc">社区用户增长约 30%；XR/AI 产品从 0 到 1 搭建</div></div>
+      <div class="tags"><span class="t">Cocos Creator</span><span class="t">TypeScript</span><span class="t">AI 大模型</span><span class="t">提示词工程</span></div>
+    </div>
+  </div>
+
+  <!-- V3: Ocean Mist 等宽标签 + 反向头像 -->
+  <div class="preview v3 layout-reverse layout-mono layout-tagrow">
+    <div class="label">V3. 海雾蓝 <span>Ocean Mist · 反向 + 等宽</span></div>
+    <div class="mock">
+      <div class="hero">
+        <img class="avatar" src="https://picsum.photos/seed/jlx3/128/128" alt="">
+        <div><div class="name">蒋立鑫</div><div class="desc">AI 大模型产品运营 / 游戏开发工程师 / 开源社区布道者。七余年复合背景，现聚焦 AI 大模型应用方向。</div></div>
+      </div>
+      <div class="sec-title">工作经历</div>
+      <div class="card"><div class="card-title">天翼云科技 · AI 大模型高级产品运营</div><div class="card-sub">2023 – 至今</div><div class="card-desc">推动大模型公有云 20+ 项功能迭代落地，工单及时率 87% → 93.27%</div></div>
+      <div class="card"><div class="card-title">Cocos · 高级产品运营</div><div class="card-sub">2021 – 2023</div><div class="card-desc">社区用户增长约 30%；XR/AI 产品从 0 到 1 搭建</div></div>
+      <div class="tags"><span class="t">Cocos Creator</span><span class="t">TypeScript</span><span class="t">AI大模型</span><span class="t">Prompt Eng</span></div>
+    </div>
+  </div>
+
+  <!-- V4: Amber Glow 衬线 + 强调线 + 药丸卡片 -->
+  <div class="preview v4 layout-serif layout-accent-line layout-pill">
+    <div class="label">V4. 琥珀暖光 <span>Amber Glow · 衬线 + 药丸</span></div>
+    <div class="mock">
+      <div class="hero">
+        <img class="avatar" src="https://picsum.photos/seed/jlx4/128/128" alt="">
+        <div><div class="name">蒋立鑫</div><div class="desc">AI 大模型产品运营 / 游戏开发工程师 / 开源社区布道者。七余年复合背景，现聚焦 AI 大模型应用方向。</div></div>
+      </div>
+      <div class="sec-title">工作经历</div>
+      <div class="card"><div class="card-title">天翼云科技 · AI 大模型高级产品运营</div><div class="card-sub">2023 – 至今</div><div class="card-desc">推动大模型公有云 20+ 项功能迭代落地，工单及时率 87% → 93.27%</div></div>
+      <div class="card"><div class="card-title">Cocos · 高级产品运营</div><div class="card-sub">2021 – 2023</div><div class="card-desc">社区用户增长约 30%；XR/AI 产品从 0 到 1</div></div>
+      <div class="tags"><span class="t">Cocos Creator</span><span class="t">TypeScript</span><span class="t">AI 大模型</span><span class="t">提示词工程</span></div>
+    </div>
+  </div>
+
+  <!-- V5: Lavender Haze 居中 + 紧凑 -->
+  <div class="preview v5 layout-center layout-compact">
+    <div class="label">V5. 薰衣草雾 <span>Lavender Haze · 居中 + 紧凑</span></div>
+    <div class="mock">
+      <div class="hero">
+        <img class="avatar" src="https://picsum.photos/seed/jlx5/128/128" alt="">
+        <div><div class="name">蒋立鑫</div><div class="desc">AI 大模型产品运营 / 游戏开发 / 开源布道</div></div>
+      </div>
+      <div class="sec-title">工作经历</div>
+      <div class="card"><div class="card-title">天翼云科技 · AI 大模型高级产品运营</div><div class="card-sub">2023 – 至今</div><div class="card-desc">推动大模型公有云 20+ 项功能迭代落地</div></div>
+      <div class="card"><div class="card-title">Cocos · 高级产品运营</div><div class="card-sub">2021 – 2023</div><div class="card-desc">社区用户增长约 30%</div></div>
+      <div class="tags"><span class="t">Cocos Creator</span><span class="t">TypeScript</span><span class="t">AI 大模型</span><span class="t">提示词工程</span></div>
+    </div>
+  </div>
+
+  <!-- V6: Matcha 强调线 + 反向 -->
+  <div class="preview v6 layout-reverse layout-accent-line layout-serif">
+    <div class="label">V6. 抹茶绿 <span>Matcha · 反向 + 衬线 + 强调线</span></div>
+    <div class="mock">
+      <div class="hero">
+        <img class="avatar" src="https://picsum.photos/seed/jlx6/128/128" alt="">
+        <div><div class="name">蒋立鑫</div><div class="desc">AI 大模型产品运营 / 游戏开发工程师 / 开源社区布道者。七余年复合背景，现聚焦 AI 大模型应用方向。</div></div>
+      </div>
+      <div class="sec-title">工作经历</div>
+      <div class="card"><div class="card-title">天翼云科技 · AI 大模型高级产品运营</div><div class="card-sub">2023 – 至今</div><div class="card-desc">推动大模型公有云 20+ 项功能迭代落地，工单及时率 87% → 93.27%</div></div>
+      <div class="card"><div class="card-title">Cocos · 高级产品运营</div><div class="card-sub">2021 – 2023</div><div class="card-desc">社区用户增长约 30%；XR/AI 产品从 0 到 1 搭建</div></div>
+      <div class="tags"><span class="t">Cocos Creator</span><span class="t">TypeScript</span><span class="t">AI 大模型</span><span class="t">提示词工程</span></div>
+    </div>
+  </div>
+
+  <!-- V7: Charcoal Frost 深色版 -->
+  <div class="preview v7 layout-pill">
+    <div class="label">V7. 炭霜黑 <span>Charcoal Frost · 深色 + 药丸</span></div>
+    <div class="mock">
+      <div class="hero">
+        <img class="avatar" src="https://picsum.photos/seed/jlx7/128/128" alt="">
+        <div><div class="name">蒋立鑫</div><div class="desc">AI 大模型产品运营 / 游戏开发工程师 / 开源社区布道者。七余年复合背景，现聚焦 AI 大模型应用方向。</div></div>
+      </div>
+      <div class="sec-title">工作经历</div>
+      <div class="card"><div class="card-title">天翼云科技 · AI 大模型高级产品运营</div><div class="card-sub">2023 – 至今</div><div class="card-desc">推动大模型公有云 20+ 项功能迭代落地，工单及时率 87% → 93.27%</div></div>
+      <div class="card"><div class="card-title">Cocos · 高级产品运营</div><div class="card-sub">2021 – 2023</div><div class="card-desc">社区用户增长约 30%；XR/AI 产品从 0 到 1 搭建</div></div>
+      <div class="tags"><span class="t">Cocos Creator</span><span class="t">TypeScript</span><span class="t">AI 大模型</span><span class="t">提示词工程</span></div>
+    </div>
+  </div>
+
+  <!-- V8: Terracotta 等宽 + 紧凑 -->
+  <div class="preview v8 layout-mono layout-compact">
+    <div class="label">V8. 赤陶土 <span>Terracotta · 等宽 + 紧凑</span></div>
+    <div class="mock">
+      <div class="hero">
+        <img class="avatar" src="https://picsum.photos/seed/jlx8/128/128" alt="">
+        <div><div class="name">蒋立鑫</div><div class="desc">AI 大模型产品运营 / 游戏开发 / 开源布道</div></div>
+      </div>
+      <div class="sec-title">工作经历</div>
+      <div class="card"><div class="card-title">天翼云科技 · AI 大模型高级产品运营</div><div class="card-sub">2023 – 至今</div><div class="card-desc">推动大模型公有云 20+ 项功能迭代落地</div></div>
+      <div class="card"><div class="card-title">Cocos · 高级产品运营</div><div class="card-sub">2021 – 2023</div><div class="card-desc">社区用户增长约 30%</div></div>
+      <div class="tags"><span class="t">Cocos Creator</span><span class="t">TypeScript</span><span class="t">AI大模型</span><span class="t">Prompt Eng</span></div>
+    </div>
+  </div>
+
+  <!-- V9: Midnight Sapphire 深蓝 + 居中 + 衬线 -->
+  <div class="preview v9 layout-center layout-serif layout-pill">
+    <div class="label">V9. 午夜蓝 <span>Midnight Sapphire · 深色 + 居中 + 药丸</span></div>
+    <div class="mock">
+      <div class="hero">
+        <img class="avatar" src="https://picsum.photos/seed/jlx9/128/128" alt="">
+        <div><div class="name">蒋立鑫</div><div class="desc">AI 大模型产品运营 / 游戏开发工程师 / 开源社区布道者</div></div>
+      </div>
+      <div class="sec-title">工作经历</div>
+      <div class="card"><div class="card-title">天翼云科技 · AI 大模型高级产品运营</div><div class="card-sub">2023 – 至今</div><div class="card-desc">推动大模型公有云 20+ 项功能迭代落地，工单及时率 87% → 93.27%</div></div>
+      <div class="card"><div class="card-title">Cocos · 高级产品运营</div><div class="card-sub">2021 – 2023</div><div class="card-desc">社区用户增长约 30%；XR/AI 产品从 0 到 1 搭建</div></div>
+      <div class="tags"><span class="t">Cocos Creator</span><span class="t">TypeScript</span><span class="t">AI 大模型</span><span class="t">提示词工程</span></div>
+    </div>
+  </div>
+
+  <!-- V10: Olive Garden 强调线 + 反向 + 等宽 -->
+  <div class="preview v10 layout-reverse layout-accent-line layout-mono layout-tagrow">
+    <div class="label">V10. 橄榄园 <span>Olive Garden · 反向 + 强调线 + 等宽</span></div>
+    <div class="mock">
+      <div class="hero">
+        <img class="avatar" src="https://picsum.photos/seed/jlx10/128/128" alt="">
+        <div><div class="name">蒋立鑫</div><div class="desc">AI 大模型产品运营 / 游戏开发工程师 / 开源社区布道者。七余年复合背景，现聚焦 AI 大模型应用方向。</div></div>
+      </div>
+      <div class="sec-title">工作经历</div>
+      <div class="card"><div class="card-title">天翼云科技 · AI 大模型高级产品运营</div><div class="card-sub">2023 – 至今</div><div class="card-desc">推动大模型公有云 20+ 项功能迭代落地，工单及时率 87% → 93.27%</div></div>
+      <div class="card"><div class="card-title">Cocos · 高级产品运营</div><div class="card-sub">2021 – 2023</div><div class="card-desc">社区用户增长约 30%；XR/AI 产品从 0 到 1</div></div>
+      <div class="tags"><span class="t">Cocos Creator</span><span class="t">TypeScript</span><span class="t">AI大模型</span><span class="t">Prompt Eng</span></div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

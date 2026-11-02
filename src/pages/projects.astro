@@ -1,0 +1,53 @@
+---
+import Base from '../layouts/Base.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+const sorted = projects
+  .filter((p) => !p.data.pinned)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const pinned = projects.filter((p) => p.data.pinned);
+---
+
+<Base title="成果 | JLX" description="JLX 的项目与成果展示">
+  <div class="mx-auto max-w-page px-4 py-12 md:px-6 md:py-16">
+    <h1 class="text-h1 mb-8">成果</h1>
+
+    {pinned.length > 0 && (
+      <section class="mb-12">
+        <h2 class="sec-title">置顶</h2>
+        <div class="grid gap-4 md:grid-cols-2">
+          {pinned.map((project) => (
+            <ProjectCard
+              title={project.data.title}
+              description={project.data.description}
+              tags={project.data.tags}
+              url={project.data.url}
+              repo={project.data.repo}
+              date={project.data.date}
+              pinned={project.data.pinned}
+            />
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section>
+      <h2 class="sec-title">全部项目</h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        {sorted.map((project) => (
+          <ProjectCard
+            title={project.data.title}
+            description={project.data.description}
+            tags={project.data.tags}
+            url={project.data.url}
+            repo={project.data.repo}
+            date={project.data.date}
+            pinned={project.data.pinned}
+          />
+        ))}
+      </div>
+    </section>
+  </div>
+</Base>
