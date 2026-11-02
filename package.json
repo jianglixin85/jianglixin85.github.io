@@ -10,6 +10,7 @@
     "sync:feishu": "tsx scripts/sync-feishu.ts",
     "sync:github": "tsx scripts/sync-github.ts",
     "sync:all": "pnpm sync:feishu && pnpm sync:github",
+    "deploy:pages": "node scripts/deploy-pages.mjs",
     "astro": "astro"
   },
   "dependencies": {
