@@ -3,6 +3,11 @@ export default {
     name: '蒋立鑫',
     avatar: '/photo.jpg',
     bio: 'AI 大模型产品运营 。大家好，我是蒋立鑫（Paul），简单介绍一下我自己， 我是由从游戏开发转向AI产品运营复合背景，现聚焦 AI 大模型应用方向，能够了解从技术实现到产品发布的全流程产品、研发、运营的思路，致力于以简洁方式解决复杂问题。',
+    roleNote: {
+      text: '想了解我目前岗位的工作介绍，可以查看该篇文章：',
+      label: 'AI大模型云服务产品运营岗位说明',
+      href: 'https://my.feishu.cn/wiki/WEVqwNjIki02rJk2ba4cho14nSd',
+    },
   },
 
   experience: [
